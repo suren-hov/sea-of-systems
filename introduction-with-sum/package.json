@@ -1,0 +1,9 @@
+{
+    "name": "sum-package",
+    "devDependencies": {
+        "standard": "*"
+    },
+    "scripts": {
+        "test": "standard && node sum.js"
+    }
+}
