@@ -1,12 +1,13 @@
-let age = 18;
+const age = 18
 
 if (age < 18) {
-  console.log("You are a minor.");
+  console.log('You are a minor.')
 } else if (age >= 18 && age < 65) {
-  console.log("You are an adult.");
+  console.log('You are an adult.')
 } else {
-  console.log("You are a senior citizen.");
+  console.log('You are a senior citizen.')
 }
 
 // Ternary Operator
-let canVote = (age >= 18) ? "Yes" : "No";
+const canVote = (age >= 18) ? 'Yes' : 'No'
+console.log(canVote)
