@@ -66,11 +66,34 @@ void testIncludes(char* string1, char* string2)
     result ? printf("true\n") : printf("false\n");
 }
 
+int endsWith(char* string1, char* string2)
+{
+    int length1 = strlen(string1);
+    int length2 = strlen(string2);
+    int startPoint1 = length1 - length2;
+    int startPoint2 = 0;
+
+    for (size_t i = startPoint1; i < length1; i++)
+    {
+        if (string1[i] != string2[startPoint2++]) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void testEndsWith(char* string1, char* string2)
+{
+    int result = endsWith(string1, string2);
+    result ? printf("true\n") : printf("false\n");
+}
+
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
 
     // testConcat(string1, string2); // Hello world world
-    testIncludes(string1, string2); // true
+    // testIncludes(string1, string2); // true
+    // testEndsWith(string1, string2); // true
 }
