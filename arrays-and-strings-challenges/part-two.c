@@ -50,10 +50,37 @@ void testJoin(int* arr, int length)
     }
 }
 
+int* sort(int* arr, int length) 
+{
+    int* tmp = (int*) malloc(sizeof(int) * length);
+    copy(arr, tmp, length);
+
+    for (size_t i = 0; i < length - 1; i++)
+    {
+        for (size_t j = i + 1; j < length; j++)
+        {
+            if (tmp[i] > tmp[j]) {
+                int temprorary =tmp[i]; 
+                tmp[i] = tmp[j];
+                tmp[j] = temprorary;
+            }
+        }
+    }
+    return tmp;
+}
+
+void testSort(int* arr, int length) {
+    printArray(arr, length);
+    int* tmp = sort(arr, length);
+    printArray(tmp, length);
+}
+
 int main()
 {
-    int arr[] = {1, 2, 3, 4, 5};
+    int arr[] = {1, 4, 3, 2, 5};
     int length = 5;
 
-    // testJoin(arr, length); // 1-2-3-4-5
+    // testJoin(arr, length); // 1-4-3-2-5
+    // testSort(arr, length); // [1 2 3 4 5]
+
 }
