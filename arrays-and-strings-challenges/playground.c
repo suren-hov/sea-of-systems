@@ -10,6 +10,12 @@ void printArray(int* arr, int length)
     printf("\n");
 }
 
+void copy(int* source, int* self, int sourceLength) {
+    for (int i = 0; i < sourceLength; i++) {
+        self[i] = source[i];
+    }
+}
+
 int* push(int* arr, int length, int elem)
 {
     int* tmp = (int*) malloc((length + 1)  * sizeof(int));
@@ -119,6 +125,88 @@ void testSlice(int* arr, int length, int startPoint, int endPoint)
     printArray(tmp, endPoint - startPoint);
 }
 
+int* splice(int* data, int length, int start, int deleteCount, int* items, int itemsLength, int* resultArrayLength) {
+    int* resultArray = (int*) malloc(length * sizeof(int));
+    int resultIndex = 0;
+    int stop = length;
+
+    // Handle negative start index
+    if (start < 0) {
+        start += length;
+    }
+
+    // Adjust stop index based on deleteCount
+    if (deleteCount > 0) {
+        stop = start + deleteCount;
+        if (deleteCount < 0)
+            stop = 0;
+    }
+
+    // Collect elements to be spliced
+    for (int i = start; i < stop; i++) {
+        resultArray[resultIndex++] = data[i];
+    }
+
+    // If no items to add but deleteCount is specified
+    if (deleteCount > 0 && itemsLength <= 0) {
+        int* deleteArr = (int*) malloc(length * sizeof(int));
+        int deleteArrLength = 0;
+
+        // Collect elements before start and after stop
+        for (int i = 0; i < length; i++) {
+            if (i == start) {
+                i = stop - 1;
+            } else {
+                deleteArr[deleteArrLength++] = data[i];
+            }
+        }
+        // Copy elements back to the data array
+        copy(deleteArr, data, deleteArrLength);
+        length = deleteArrLength;
+        free(deleteArr);
+    }
+
+    // If there are items to insert
+    if (itemsLength > 0) {
+        int* gatherArr = (int*) malloc((length + itemsLength) * sizeof(int));
+        int gatherArrLength = 0;
+
+        // Collect elements before start, then items, then elements after stop
+        for (int i = 0; i < length; i++) {
+            if (i == start) {
+                for (int j = 0; j < itemsLength; j++) {
+                    gatherArr[gatherArrLength++] = items[j];
+                }
+                i = stop - 1;
+            } else {
+                gatherArr[gatherArrLength++] = data[i];
+            }
+        }
+        // Copy gathered elements back to the data array
+        copy(gatherArr, data, gatherArrLength);
+        length = gatherArrLength;
+        free(gatherArr);
+    }
+
+    *resultArrayLength = resultIndex;
+    return resultArray;
+}
+
+
+void testSplice(int* arr, int length)
+{
+    int start = 2;
+    int deleteCount = 2;
+    int items[] = {9, 10};
+    int itemsLength = 2;
+    int resultArrayLength = 0;
+    
+    printArray(arr, length);
+    int* tmp = splice(arr, length, start, deleteCount, items, itemsLength, &resultArrayLength);
+    printArray(arr, length);
+    printArray(tmp, resultArrayLength);
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 4, 5};
@@ -131,4 +219,5 @@ int main()
     // testUnshift(arr, length, 8); // [8 1 2 3 4 5]
     // testConcat(arr, arr2, length, length); // [1 2 3 4 5 6 7 8 9 10]
     // testSlice(arr, length, 1, 3); // [2 3]
+    testSplice(arr, length); // 1 2 9 10 5
 }
