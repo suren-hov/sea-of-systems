@@ -121,18 +121,38 @@ int indexOf(char* string1, char* character)
 void testIndexOf(char* string1, char* character)
 {
     int result = indexOf(string1, character);
-    result != -1 ? printf("true\n") : printf("false\n");
+    result != -1 ? printf("%d\n", result) : printf("false\n");
+}
+
+int lastIndexOf(char* string1, char* character)
+{
+    int index = -1;
+    for (size_t i = 0; i < strlen(string1); i++)
+    {
+        if(string1[i] == *character) {
+            index = i;
+        }
+    }
+    return index;
+}
+
+void testLastIndexOf(char* string1, char* character)
+{
+    int result = lastIndexOf(string1, character);
+    result != -1 ? printf("%d\n", result) : printf("false\n");
 }
 
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
-    char character = 'o';
+    char character = 'l';
 
     // testConcat(string1, string2); // Hello world world
     // testIncludes(string1, string2); // true
     // testEndsWith(string1, string2); // true
     // testStartsWith(string1, string2); // false
-    // testIndexOf(string1, &character); // true
+    // testIndexOf(string1, &character); // 2
+    // testLastIndexOf(string1, &character); // 9
+    
 }
