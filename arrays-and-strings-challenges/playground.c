@@ -102,6 +102,23 @@ void testConcat(int* arr1, int* arr2, int lengthArr1, int lengthArr2)
     printArray(tmp, lengthArr1 + lengthArr2);
 }
 
+int* slice(int* arr, int length, int startPoint, int endPoint)
+{
+    int* tmp = (int*) malloc(sizeof(int) * (endPoint - startPoint));
+    for (size_t i = 0; i < endPoint; i++)
+    {
+        tmp[i] = arr[startPoint + i];
+    }
+    return tmp;
+}
+
+void testSlice(int* arr, int length, int startPoint, int endPoint)
+{
+    printArray(arr, length);
+    int* tmp = slice(arr, length, startPoint, endPoint);
+    printArray(tmp, endPoint - startPoint);
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 4, 5};
@@ -112,5 +129,6 @@ int main()
     // testPop(arr, length); // [1 2 3 4]
     // testShift(arr, length); // [2 3 4 5]
     // testUnshift(arr, length, 8); // [8 1 2 3 4 5]
-    // testConcat(arr, arr2, length, length); // [1 2 3 4 5 6 7 8 9 10 ]
+    // testConcat(arr, arr2, length, length); // [1 2 3 4 5 6 7 8 9 10]
+    // testSlice(arr, length, 1, 3); // [2 3]
 }
