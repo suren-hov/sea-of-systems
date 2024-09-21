@@ -107,15 +107,32 @@ void testStartsWith(char* string1, char* string2)
     result ? printf("true\n") : printf("false\n");
 }
 
+int indexOf(char* string1, char* character)
+{
+    for (size_t i = 0; i < strlen(string1); i++)
+    {
+        if(string1[i] == *character) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void testIndexOf(char* string1, char* character)
+{
+    int result = indexOf(string1, character);
+    result != -1 ? printf("true\n") : printf("false\n");
+}
 
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
+    char character = 'o';
 
     // testConcat(string1, string2); // Hello world world
     // testIncludes(string1, string2); // true
     // testEndsWith(string1, string2); // true
     // testStartsWith(string1, string2); // false
-
+    // testIndexOf(string1, &character); // true
 }
