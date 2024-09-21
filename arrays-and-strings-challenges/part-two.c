@@ -75,19 +75,40 @@ void testSort(int* arr, int length) {
     printArray(tmp, length);
 }
 
-void fun(int number)
+void printNumber(int number)
 {
     printf("%d ", number);
 }
 
-void forEach(int* arr, int length, void (*fun)(int))
+void forEach(int* arr, int length, void (*function)(int))
 {
     int* tmp = (int*) malloc(sizeof(int) * length);
     for (size_t i = 0; i < length; i++)
     {
-        fun(arr[i]);
+        function(arr[i]);
     }
     printf("\n");
+}
+
+int multpleNumber(int number)
+{
+    return number * 2;
+}
+
+int* map(int* arr, int length, int (*function)(int))
+{
+    int* tmp = (int*) malloc(sizeof(int) * length);
+    for (size_t i = 0; i < length; i++)
+    {
+        tmp[i] = function(arr[i]);
+    }
+    return tmp;
+}
+
+void testMap(int* arr, int length) {
+    printArray(arr, length);
+    int* tmp = map(arr, length, multpleNumber);
+    printArray(tmp, length);
 }
 
 int main()
@@ -97,5 +118,6 @@ int main()
 
     // testJoin(arr, length); // 1-4-3-2-5
     // testSort(arr, length); // [1 2 3 4 5]
-    // forEach(arr, length, fun); // [1 2 3 4 5]
+    // forEach(arr, length, printNumber); // [1 2 3 4 5]
+    // testMap(arr, length); // [2 8 6 4 10]
 }
