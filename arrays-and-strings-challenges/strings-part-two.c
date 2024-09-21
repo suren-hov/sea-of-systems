@@ -40,6 +40,7 @@ char** split(char* string, int* length)
             
         }
     }
+    return result;
 }
 
 void testSplit(char* string1)
