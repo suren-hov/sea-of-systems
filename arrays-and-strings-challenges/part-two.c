@@ -111,6 +111,30 @@ void testMap(int* arr, int length) {
     printArray(tmp, length);
 }
 
+int filterOddNumbers(int number) {
+    return number % 2 != 0;
+}
+
+int* filter(int* arr, int length, int (*function)(int), int* resultLength)
+{
+    int* tmp = (int*) malloc(sizeof(int) * length);
+    int index = 0;
+    for (size_t i = 0; i < length; i++)
+    {
+        if (function(arr[i])) { tmp[index++] = arr[i]; };
+    }
+    tmp = realloc(tmp, sizeof(int) * index);
+    *resultLength = index;
+    return tmp;
+}
+
+void testFilter(int* arr, int length) {
+    printArray(arr, length);
+    int resultLength = 0;
+    int* tmp = filter(arr, length, filterOddNumbers, &resultLength);
+    printArray(tmp, resultLength);
+}
+
 int main()
 {
     int arr[] = {1, 4, 3, 2, 5};
@@ -120,4 +144,5 @@ int main()
     // testSort(arr, length); // [1 2 3 4 5]
     // forEach(arr, length, printNumber); // [1 2 3 4 5]
     // testMap(arr, length); // [2 8 6 4 10]
+    testFilter(arr, length); // [1 3 5]
 }
