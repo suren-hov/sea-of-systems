@@ -135,6 +135,26 @@ void testFilter(int* arr, int length) {
     printArray(tmp, resultLength);
 }
 
+int sumWithAcc(int acc, int number)
+{
+    return acc += number;
+}
+
+int reduce(int* arr, int length, int acc)
+{
+    for (size_t i = 0; i < length; i++)
+    {
+        acc = sumWithAcc(acc, arr[i]);
+    }
+    return acc;
+}
+
+void testReduce(int* arr, int length, int acc) {
+    printArray(arr, length);
+    int tmp = reduce(arr, length, acc);
+    printf("%d\n", tmp);
+}
+
 int main()
 {
     int arr[] = {1, 4, 3, 2, 5};
@@ -144,5 +164,6 @@ int main()
     // testSort(arr, length); // [1 2 3 4 5]
     // forEach(arr, length, printNumber); // [1 2 3 4 5]
     // testMap(arr, length); // [2 8 6 4 10]
-    testFilter(arr, length); // [1 3 5]
+    // testFilter(arr, length); // [1 3 5]
+    // testReduce(arr, length, 0); // 15
 }
