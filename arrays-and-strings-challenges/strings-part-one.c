@@ -152,6 +152,7 @@ int findIndex(char* string1, char* string2)
     for (size_t i = 0; i < strlen(string1); i++)
     {
         if (flag && string1[i] != string2[indexString2]) {
+            if (!count) { return index; };
             if (strlen(string1) - i >= strlen(string2)) {
                 flag = 0;
                 count = strlen(string2);
@@ -176,7 +177,7 @@ char* replace(char* string1, char* string2, char* string3)
 {
     int index = findIndex(string1, string2);
     int startPointIndex3 = 0;
-    for (size_t i = index; i < strlen(string1); i++)
+    for (size_t i = index; i < index + strlen(string3); i++)
     {
         string1[i] = string3[startPointIndex3++];
     }
@@ -189,11 +190,30 @@ void testReplace(char* string1, char* string2, char* string3)
     printf("%s\n", result);
 }
 
+char* replaceAll(char* string1, char* string2, char* string3)
+{
+    int index = findIndex(string1, string2);
+    int startPointIndex3 = 0;
+    for (size_t i = index; i < index + strlen(string3); i++)
+    {
+        string1[i] = string3[startPointIndex3++];
+    }
+    return string1;
+}
+
+void testReplaceAll(char* string1, char* string2, char* string3)
+{
+    char* result = replaceAll(string1, string2, string3);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
     char string3[] = "there";
+    char string4[] = "ll";
+    char string5[] = "II";
     char character = 'l';
 
     // testConcat(string1, string2); // Hello world world
@@ -203,4 +223,5 @@ int main()
     // testIndexOf(string1, &character); // 2
     // testLastIndexOf(string1, &character); // 9
     // testReplace(string1, string2, string3); // Hello there
+    // testReplaceAll(string1, string4, string5); // Hello there
 }
