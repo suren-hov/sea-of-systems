@@ -207,6 +207,12 @@ void testReplaceAll(char* string1, char* string2, char* string3)
     printf("%s\n", result);
 }
 
+void testSearch(char* string1, char* string2)
+{
+    int index = findIndex(string1, string2);
+    index != -1 ? printf("%d\n", index) : printf("Not Found\n");
+}
+
 int main()
 {
     char string1[] = "Hello world";
@@ -224,4 +230,5 @@ int main()
     // testLastIndexOf(string1, &character); // 9
     // testReplace(string1, string2, string3); // Hello there
     // testReplaceAll(string1, string4, string5); // Hello there
+    // testSearch(string1, string2); // 6
 }
