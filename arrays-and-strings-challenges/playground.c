@@ -223,6 +223,22 @@ void testIndexOf(int* arr, int length, int elem)
     printf("%d\n", index);
 }
 
+int includes(int* arr, int length, int elem)
+{
+    for (size_t i = 0; i < length; i++)
+    {
+        if (arr[i] == elem) return 1; 
+    }
+    return 0;
+}
+
+void testIncludes(int* arr, int length, int elem)
+{
+    printArray(arr, length);
+    int index = indexOf(arr, length, elem);
+    printf("%s\n", index != -1 ? "true" : "false");
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 4, 5};
@@ -237,4 +253,5 @@ int main()
     // testSlice(arr, length, 1, 3); // [2 3]
     // testSplice(arr, length); // 1 2 9 10 5
     // testIndexOf(arr, length, 2); // 1
+    // testIncludes(arr, length, -2); // false
 }
