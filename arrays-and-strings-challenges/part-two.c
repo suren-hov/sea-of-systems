@@ -176,6 +176,26 @@ void testFind(int* arr, int length, int elem)
     }
 }
 
+int findIndex(int* arr, int length, int elem)
+{
+    for (size_t i = 0; i < length; i++)
+    {
+        if (arr[i] == elem) { return i; }
+    }
+    return -1;
+}
+
+void testFindIndex(int* arr, int length, int elem)
+{
+    printArray(arr, length);
+    int index = findIndex(arr, length, elem);
+    if (index != -1) {
+        printf("%d\n", index);
+    } else {
+        printf("Element do not found!\n");
+    }
+}
+
 int main()
 {
     int arr[] = {1, 4, 3, 2, 5};
@@ -187,5 +207,6 @@ int main()
     // testMap(arr, length); // [2 8 6 4 10]
     // testFilter(arr, length); // [1 3 5]
     // testReduce(arr, length, 0); // 15
-    // testFind(arr, length, 4); //4
+    // testFind(arr, length, 4); // 4
+    // testFindIndex(arr, length, 4); // 1
 }
