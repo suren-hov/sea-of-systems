@@ -75,6 +75,21 @@ void testSort(int* arr, int length) {
     printArray(tmp, length);
 }
 
+void fun(int number)
+{
+    printf("%d ", number);
+}
+
+void forEach(int* arr, int length, void (*fun)(int))
+{
+    int* tmp = (int*) malloc(sizeof(int) * length);
+    for (size_t i = 0; i < length; i++)
+    {
+        fun(arr[i]);
+    }
+    printf("\n");
+}
+
 int main()
 {
     int arr[] = {1, 4, 3, 2, 5};
@@ -82,5 +97,5 @@ int main()
 
     // testJoin(arr, length); // 1-4-3-2-5
     // testSort(arr, length); // [1 2 3 4 5]
-
+    // forEach(arr, length, fun); // [1 2 3 4 5]
 }
