@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 void printArray(int* arr, int length)
 {
@@ -65,6 +65,23 @@ void testEvery(int* arr, int length)
     }
 }
 
+int* fill(int* arr, int length, int number)
+{
+    int* tmp = (int*) malloc(sizeof(int) * length);
+    for (size_t i = 0; i < length; i++)
+    {
+        tmp[i] = 0;
+    }
+    return tmp;
+}
+
+void testFill(int* arr, int length, int number)
+{
+    printArray(arr, length);
+    int* tmp = fill(arr, length, number);
+    printArray(tmp, length);
+}
+
 int main()
 {
     int arr[] = {1, 4, 3, 2, 5};
@@ -72,5 +89,5 @@ int main()
 
     // testSome(arr, length); // true
     // testEvery(arr, length); // true
-
+    // testFill(arr, length, 0); // [0 0 0 0 0]
 }
