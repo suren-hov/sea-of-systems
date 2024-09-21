@@ -239,6 +239,25 @@ void testIncludes(int* arr, int length, int elem)
     printf("%s\n", index != -1 ? "true" : "false");
 }
 
+
+int* reverse(int* arr, int length)
+{
+    int* tmp = (int*) malloc(sizeof(int) * length);
+    int end = length - 1;
+    for (size_t i = 0; i < length; i++)
+    {
+        tmp[i] = arr[end--];
+    }
+    return tmp;
+}
+
+void testReverse(int* arr, int length)
+{
+    printArray(arr, length);
+    int* tmp = reverse(arr, length);
+    printArray(tmp, length);
+}
+
 int main()
 {
     int arr[] = {1, 2, 3, 4, 5};
@@ -254,4 +273,5 @@ int main()
     // testSplice(arr, length); // 1 2 9 10 5
     // testIndexOf(arr, length, 2); // 1
     // testIncludes(arr, length, -2); // false
+    // testReverse(arr, length); // [5 4 3 2 1]
 }
