@@ -32,10 +32,45 @@ void testConcat(char* string1, char* string2)
     printf("%s\n", concatedString);
 }
 
+int includes(char* string1, char* string2)
+{
+    int indexString2 = 0;
+    int flag = 0;
+    int count = strlen(string2);
+
+    for (size_t i = 0; i < strlen(string1); i++)
+    {
+        if (flag && string1[i] != string2[indexString2]) {
+            if (strlen(string1) - i >= strlen(string2)) {
+                flag = 0;
+                count = strlen(string2);
+                indexString2 = 0;
+            } else {
+                return 0;
+            }
+        }
+
+        if (string1[i] == string2[indexString2]){
+            count--;
+            indexString2++;
+            flag = 1;
+        }
+
+    }
+    return count == 0 ? 1 : 0; 
+}
+
+void testIncludes(char* string1, char* string2)
+{
+    int result = includes(string1, string2);
+    result ? printf("true\n") : printf("false\n");
+}
+
 int main()
 {
-    char string1[] = "Hello";
-    char string2[] = "world!";
+    char string1[] = "Hello world";
+    char string2[] = "world";
 
-    testConcat(string1, string2);
+    // testConcat(string1, string2); // Hello world world
+    testIncludes(string1, string2); // true
 }
