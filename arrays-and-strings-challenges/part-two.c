@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 
 void printArray(int* arr, int length)
 {
@@ -155,6 +156,26 @@ void testReduce(int* arr, int length, int acc) {
     printf("%d\n", tmp);
 }
 
+int find(int* arr, int length, int elem)
+{
+    for (size_t i = 0; i < length; i++)
+    {
+        if (arr[i] == elem) { return elem; }
+    }
+    return INT_MAX;
+}
+
+void testFind(int* arr, int length, int elem)
+{
+    printArray(arr, length);
+    int result = find(arr, length, elem);
+    if (result != INT_MAX) {
+        printf("%d\n", elem);
+    } else {
+        printf("Element do not found!\n");
+    }
+}
+
 int main()
 {
     int arr[] = {1, 4, 3, 2, 5};
@@ -166,4 +187,5 @@ int main()
     // testMap(arr, length); // [2 8 6 4 10]
     // testFilter(arr, length); // [1 3 5]
     // testReduce(arr, length, 0); // 15
+    // testFind(arr, length, 4); //4
 }
