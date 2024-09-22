@@ -106,6 +106,42 @@ void testSubstring(char* string1, int start, int length)
     printf("%s\n", result);
 }
 
+char* toLowerCase(char* string)
+{
+    for (size_t i = 0; i < strlen(string); i++)
+    {
+        if (string[i] > 64 && string[i] < 91) {
+            string[i] = string[i] + 32;
+        }
+    }
+
+    return string;
+}
+
+void testToLowerCase(char* string)
+{
+    char* result = toLowerCase(string);
+    printf("%s\n", result);
+}
+
+char* toUpperCase(char* string)
+{
+    for (size_t i = 0; i < strlen(string); i++)
+    {
+        if (string[i] > 96 && string[i] < 123) {
+            string[i] = string[i] - 32;
+        }
+    }
+
+    return string;
+}
+
+void testToUpperCase(char* string)
+{
+    char* result = toUpperCase(string);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
@@ -115,4 +151,6 @@ int main()
     // testSplit(string1); // ["Hello", "world"]
     // testSubstr(string1, 1, 6); // ello
     // testSubstring(string1, 1, 6); // ello w
+    testToLowerCase(string1); // hello world
+    testToUpperCase(string1); // HELLO WORLD
 }
