@@ -90,6 +90,23 @@ function testSlice(array, start, end) {
     console.log(newArray);
 }
 
+function splice(array, start, end) {
+    let newArray = [];
+    let startPoint = 0;
+
+    for (let index = 0; index < array.length; index++) {
+        if (index < start || index > end) {
+            newArray[startPoint++] = array[index];
+        }     
+    }
+    return newArray;
+}
+
+function testSplice(array, start, end) {
+    let newArray = splice(array, start, end);
+    console.log(newArray);
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -103,7 +120,8 @@ function main()
     // testShift(array); // [ 2, 3]
     // testUnshift(array, 0); // [ 0, 1, 2, 3 ]
     // testConcat(array, array2); // [ 1, 2, 3, 4, 5, 6 ]
-    testSlice(array3, 1, 3)
+    // testSlice(array3, 1, 3) // [ 5, 6]
+    testSplice(array, 1, 1) // [ 1, 3 ]
 }
 
 main()
