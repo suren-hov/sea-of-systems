@@ -215,11 +215,58 @@ void testTrimEnd(char* string)
     printf("%s\n", result);
 }
 
+char* padStart(char* string, char character, int length)
+{
+    char* result = (char*) malloc(sizeof(char) * length);
+    int index = 0;
+    char buffer[length];
+
+    for (size_t i = 0; i < length - strlen(string); i++)
+    {
+        buffer[index++] = character;
+    }
+    buffer[index] = '\0';
+    strcat(buffer, string);
+    strcpy(result, buffer);
+    return result;
+}
+
+void testPadStart(char* string, char character, int length)
+{
+    char* result = padStart(string, character, length);
+    printf("%s\n", result);
+}
+
+char* padEnd(char* string, char character, int length)
+{
+    char* result = (char*) malloc(sizeof(char) * length);
+    int index = 0;
+    char buffer[length];
+    buffer[index++] = '\0';
+
+    strcat(buffer, string);
+    for (size_t i = strlen(string); i < length; i++)
+    {
+        buffer[index++] = character;
+    }
+
+    buffer[index] = '\0';
+    strcpy(result, buffer);
+    return result;
+}
+
+void testPadEnd(char* string, char character, int length)
+{
+    char* result = padEnd(string, character, length);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
     char string3[] = " Hello world ";
+    char string4[] = "5";
 
     // testSlice(string1, 0, 5); // Hello
     // testSplit(string1); // ["Hello", "world"]
@@ -230,5 +277,6 @@ int main()
     // testTrim(string3); // "Hello world"
     // testTrimStart(string3); // "Hello world "
     // testTrimEnd(string3); // " Hello world"
-
+    // testPadStart(string4, '0', 3);
+    // testPadEnd(string4, '0', 3);
 }
