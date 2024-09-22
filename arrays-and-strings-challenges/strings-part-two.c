@@ -142,15 +142,42 @@ void testToUpperCase(char* string)
     printf("%s\n", result);
 }
 
+char* trim(char* string)
+{
+    char* trimmedString = (char*) malloc(sizeof(char) * strlen(string));
+    int index = 0;
+    int flag = 0;
+    for (size_t i = 0; i < strlen(string); i++)
+    {
+        if (string[i] == ' ' && (string[i + 1] == '\0' || string[i + 1] == ' ')) { flag = 0; }
+
+        if ((string[i] == ' ' || string[i] == '\0' ) && !flag) {
+            continue;
+        } else {
+            flag = 1;
+            trimmedString[index++] = string[i];
+        }
+    }
+    return trimmedString;
+}
+
+void testTrim(char* string)
+{
+    char* result = trim(string);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
+    char string3[] = " Hello world ";
 
     // testSlice(string1, 0, 5); // Hello
     // testSplit(string1); // ["Hello", "world"]
     // testSubstr(string1, 1, 6); // ello
     // testSubstring(string1, 1, 6); // ello w
-    testToLowerCase(string1); // hello world
-    testToUpperCase(string1); // HELLO WORLD
+    // testToLowerCase(string1); // hello world
+    // testToUpperCase(string1); // HELLO WORLD
+    // testTrim(string3); // Hello world
 }
