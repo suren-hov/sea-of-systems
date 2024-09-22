@@ -76,10 +76,25 @@ function testConcat(array, array2) {
     console.log(newArray);
 }
 
+function slice(array, start, end) {
+    let newArray = [];
+    let startPoint = 0;
+    for (let index = start; index < end; index++) {
+        newArray[startPoint++] = array[index];
+    }
+    return newArray;
+}
+
+function testSlice(array, start, end) {
+    let newArray = slice(array, start, end);
+    console.log(newArray);
+}
+
 function main()
 {
     let array = [1, 2, 3];
     let array2 = [4, 5, 6];
+    let array3 = [4, 5, 6, 7];
     let length = 3;
     let elem = 4;
 
@@ -88,6 +103,7 @@ function main()
     // testShift(array); // [ 2, 3]
     // testUnshift(array, 0); // [ 0, 1, 2, 3 ]
     // testConcat(array, array2); // [ 1, 2, 3, 4, 5, 6 ]
+    testSlice(array3, 1, 3)
 }
 
 main()
