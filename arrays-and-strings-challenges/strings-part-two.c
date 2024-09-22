@@ -62,12 +62,12 @@ void testSplit(char* string1)
     printStringsArray(result, length);
 }
 
-char* substring(char* string, int start, int end)
+char* substr(char* string, int start, int end)
 {
     char buffer[50];
     int bufferIndex = 0;
 
-    for (size_t i = start; i <= end; i++) {
+    for (size_t i = start; i < end; i++) {
         buffer[bufferIndex++] = string[i];
     }
 
@@ -78,9 +78,31 @@ char* substring(char* string, int start, int end)
     return result;   
 }
 
-void testSubstring(char* string1, int start, int end)
+void testSubstr(char* string1, int start, int end)
 {
-    char* result = substring(string1, start, end);
+    char* result = substr(string1, start, end);
+    printf("%s\n", result);
+}
+
+char* substring(char* string, int start, int length)
+{
+    char buffer[50];
+    int bufferIndex = 0;
+
+    for (size_t i = start; i < start + length; i++) {
+        buffer[bufferIndex++] = string[i];
+    }
+
+    buffer[bufferIndex] = '\0';
+    char* result = (char*) malloc(sizeof(char*));
+    strcpy(result, buffer);
+
+    return result;   
+}
+
+void testSubstring(char* string1, int start, int length)
+{
+    char* result = substring(string1, start, length);
     printf("%s\n", result);
 }
 
@@ -91,6 +113,6 @@ int main()
 
     // testSlice(string1, 0, 5); // Hello
     // testSplit(string1); // ["Hello", "world"]
-    // testSubstring(string1, 0, 5); // Hello
-
+    // testSubstr(string1, 1, 6); // ello
+    // testSubstring(string1, 1, 6); // ello w
 }
