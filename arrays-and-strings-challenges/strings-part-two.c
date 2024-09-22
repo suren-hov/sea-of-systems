@@ -62,12 +62,35 @@ void testSplit(char* string1)
     printStringsArray(result, length);
 }
 
+char* substring(char* string, int start, int end)
+{
+    char buffer[50];
+    int bufferIndex = 0;
+
+    for (size_t i = start; i <= end; i++) {
+        buffer[bufferIndex++] = string[i];
+    }
+
+    buffer[bufferIndex] = '\0';
+    char* result = (char*) malloc(sizeof(char*));
+    strcpy(result, buffer);
+
+    return result;   
+}
+
+void testSubstring(char* string1, int start, int end)
+{
+    char* result = substring(string1, start, end);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
 
     // testSlice(string1, 0, 5); // Hello
-    testSplit(string1); // ["Hello", "world"]
+    // testSplit(string1); // ["Hello", "world"]
+    // testSubstring(string1, 0, 5); // Hello
 
 }
