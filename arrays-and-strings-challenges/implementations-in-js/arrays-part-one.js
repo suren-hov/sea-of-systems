@@ -56,9 +56,30 @@ function testUnshift(array, elem) {
     console.log(newArray);
 }
 
+function concat(array, array2) {
+    length1 = array.length;
+    length2 = array2.length
+    let newArray = [];
+    
+    for (let index = 0; index < length1 + length2; index++) {
+        if (index < length1) {
+            newArray[index] = array[index];
+        } else {
+            newArray[index] = array2[index - length1]
+        }
+    }
+    return newArray;
+}
+
+function testConcat(array, array2) {
+    let newArray = concat(array, array2);
+    console.log(newArray);
+}
+
 function main()
 {
     let array = [1, 2, 3];
+    let array2 = [4, 5, 6];
     let length = 3;
     let elem = 4;
 
@@ -66,6 +87,7 @@ function main()
     // testPop(array); //  [ 1, 2 ]
     // testShift(array); // [ 2, 3]
     // testUnshift(array, 0); // [ 0, 1, 2, 3 ]
+    // testConcat(array, array2); // [ 1, 2, 3, 4, 5, 6 ]
 }
 
 main()
