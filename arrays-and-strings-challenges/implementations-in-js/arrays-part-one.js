@@ -129,6 +129,22 @@ function testIncludes(array, number) {
     console.log(includes(array, number));
 }
 
+function reverse(array) {
+    let endPoint = array.length -1;
+    for (let index = 0; index < array.length; index++) {
+        if (index <= endPoint) {
+            let tmp = array[index];
+            array[index] = array[endPoint];
+            array[endPoint--] = tmp;
+        }
+    }
+    return array;
+}
+
+function testReverse(array) {
+    console.log(reverse(array));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -146,6 +162,7 @@ function main()
     // testSplice(array, 1, 1) // [ 1, 3 ]
     // testIndexOf(array, 2); // 1
     // testIncludes(array, 2); // true
+    // testReverse(array) // [ 3, 2, 1 ]
 }
 
 main()
