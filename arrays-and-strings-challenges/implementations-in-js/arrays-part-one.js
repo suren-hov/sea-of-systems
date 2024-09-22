@@ -28,6 +28,20 @@ function testPop(arr) {
     console.log("Array after pop: ", arr);
 }
 
+Array.prototype.customShift = function() {
+    for (let index = 0; index < this.length - 1; index++) {
+        this[index] = this[index + 1];
+    }
+
+    this.length = this.length - 1;
+    return this;
+}
+
+function testShift(array) {
+    let newArray = array.customShift();
+    console.log(newArray);
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -35,7 +49,8 @@ function main()
     let elem = 4;
 
     // testPush(array, length, elem); // [ 1, 2, 3, 4 ]
-    // testPop(array) //  [ 1, 2 ]
+    // testPop(array); //  [ 1, 2 ]
+    // testShift(array); // [ 2, 3]
 }
 
 main()
