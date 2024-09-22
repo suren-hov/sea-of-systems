@@ -261,12 +261,34 @@ void testPadEnd(char* string, char character, int length)
     printf("%s\n", result);
 }
 
+char* repeat(char* string, int times)
+{
+    int length = strlen(string);
+    char* result = (char*) malloc(sizeof(char) * length * times);
+    for (size_t i = 0; i < length * times; i++)
+    {
+        if (i < length) {
+            result[i] = string[i];
+        } else {
+            result[i] = string[i % length];
+        }
+    }
+    return result;
+}
+
+void testRepeat(char* string, int times)
+{
+    char* result = repeat(string, times);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
     char string2[] = "world";
     char string3[] = " Hello world ";
     char string4[] = "5";
+    char string5[] = "hi";
 
     // testSlice(string1, 0, 5); // Hello
     // testSplit(string1); // ["Hello", "world"]
@@ -277,6 +299,7 @@ int main()
     // testTrim(string3); // "Hello world"
     // testTrimStart(string3); // "Hello world "
     // testTrimEnd(string3); // " Hello world"
-    // testPadStart(string4, '0', 3);
-    // testPadEnd(string4, '0', 3);
+    // testPadStart(string4, '0', 3); // 005
+    // testPadEnd(string4, '0', 3); // 500
+    // testRepeat(string5, 3); // hihihi
 }
