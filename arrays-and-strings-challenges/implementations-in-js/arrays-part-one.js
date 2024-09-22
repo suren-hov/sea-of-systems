@@ -107,6 +107,17 @@ function testSplice(array, start, end) {
     console.log(newArray);
 }
 
+function indexOf(array, number) {
+    for (let i = 0; i < array.length; ++i) {
+        if (array[i] == number) { return i } 
+    }
+    return -1;
+}
+
+function testIndexOf(array, number) {
+    console.log(indexOf(array, number));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -121,7 +132,8 @@ function main()
     // testUnshift(array, 0); // [ 0, 1, 2, 3 ]
     // testConcat(array, array2); // [ 1, 2, 3, 4, 5, 6 ]
     // testSlice(array3, 1, 3) // [ 5, 6]
-    testSplice(array, 1, 1) // [ 1, 3 ]
+    // testSplice(array, 1, 1) // [ 1, 3 ]
+    testIndexOf(array, 2); // 1
 }
 
 main()
