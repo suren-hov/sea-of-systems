@@ -42,6 +42,20 @@ function testShift(array) {
     console.log(newArray);
 }
 
+Array.prototype.unshift = function (elem) {
+    this.length = this.length + 1;
+    for (let index = this.length - 1; index > 0; index--) {
+        this[index] = this[index - 1];
+    }
+    this[0] = elem;
+    return this;
+}
+
+function testUnshift(array, elem) {
+    let newArray = array.unshift(elem);
+    console.log(newArray);
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -51,6 +65,7 @@ function main()
     // testPush(array, length, elem); // [ 1, 2, 3, 4 ]
     // testPop(array); //  [ 1, 2 ]
     // testShift(array); // [ 2, 3]
+    // testUnshift(array, 0); // [ 0, 1, 2, 3 ]
 }
 
 main()
