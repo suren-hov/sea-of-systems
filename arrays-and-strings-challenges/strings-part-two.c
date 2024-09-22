@@ -167,6 +167,54 @@ void testTrim(char* string)
     printf("%s\n", result);
 }
 
+char* trimStart(char* string)
+{
+    char* trimmedString = (char*) malloc(sizeof(char) * strlen(string));
+    int index = 0;
+    int flag = 0;
+    for (size_t i = 0; i < strlen(string); i++)
+    {
+        if ((string[i] == ' ' || string[i] == '\0' ) && !flag) {
+            continue;
+        } else {
+            flag = 1;
+            trimmedString[index++] = string[i];
+        }
+    }
+    return trimmedString;
+}
+
+void testTrimStart(char* string)
+{
+    char* result = trimStart(string);
+    printf("%s", result);
+}
+
+char* trimEnd(char* string)
+{
+    char* trimmedString = (char*) malloc(sizeof(char) * strlen(string));
+    int index = 0;
+    int flag = 1;
+    for (size_t i = 0; i < strlen(string); i++)
+    {
+        if (string[i] == ' ' && (string[i + 1] == '\0' || string[i + 1] == ' ')) { flag = 0; }
+
+        if ((string[i] == ' ' || string[i] == '\0' ) && !flag) {
+            continue;
+        } else {
+            flag = 1;
+            trimmedString[index++] = string[i];
+        }
+    }
+    return trimmedString;
+}
+
+void testTrimEnd(char* string)
+{
+    char* result = trimEnd(string);
+    printf("%s\n", result);
+}
+
 int main()
 {
     char string1[] = "Hello world";
@@ -179,5 +227,8 @@ int main()
     // testSubstring(string1, 1, 6); // ello w
     // testToLowerCase(string1); // hello world
     // testToUpperCase(string1); // HELLO WORLD
-    // testTrim(string3); // Hello world
+    // testTrim(string3); // "Hello world"
+    // testTrimStart(string3); // "Hello world "
+    // testTrimEnd(string3); // " Hello world"
+
 }
