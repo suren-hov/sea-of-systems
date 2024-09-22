@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-void printArray(char** arr, int length)
-{
-    for (int i = 0; i < length; i++)
-    {
-        printf("%d ", *arr[i]);
+void printStringsArray(char** array, int length) {
+    printf("[");
+    for (int i = 0; i < length; i++) {
+        if (i == length - 1) {
+            printf("\"%s\"", array[i]);
+        } else {
+            printf("\"%s\", ", array[i]);
+        }
     }
-    printf("\n");
+    printf("]\n");
 }
 
 char* slice(char* string1, int start, int end)
@@ -30,24 +33,33 @@ void testSlice(char* string1, int start, int end)
 
 char** split(char* string, int* length)
 {
-    char** result = (char**) malloc(sizeof(char*));
+    char** result = (char**) malloc(sizeof(char*) * 10);
     int indexOfResult = 0;
-    int lastWordIndex = 0;
-    for (size_t i = 0; i < strlen(string); i++)
-    {
-        if (string[i] == ' ') {
-            result[indexOfResult] = (char*) malloc(sizeof(char*));
-            
+    char buffer[50];
+    int bufferIndex = 0;
+
+    for (size_t i = 0; i <= strlen(string); i++) {
+        if (string[i] != ' ' && string[i] != '\0') {
+            buffer[bufferIndex++] = string[i];
+        } else {
+            buffer[bufferIndex] = '\0';
+            result[indexOfResult] = (char*) malloc(strlen(buffer) + 1);
+            strcpy(result[indexOfResult], buffer);
+
+            indexOfResult++; 
+            bufferIndex = 0;
         }
     }
-    return result;
+
+    *length = indexOfResult;
+    return result;   
 }
 
 void testSplit(char* string1)
 {
-    int* length = 0;
-    char** result = split(string1, length);
-    printArray(result, *length);
+    int length = 0;
+    char** result = split(string1, &length);
+    printStringsArray(result, length);
 }
 
 int main()
