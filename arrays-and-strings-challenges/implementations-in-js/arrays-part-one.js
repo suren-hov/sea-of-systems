@@ -118,6 +118,17 @@ function testIndexOf(array, number) {
     console.log(indexOf(array, number));
 }
 
+function includes(array, number) {
+    for (let i = 0; i < array.length; ++i) {
+        if (array[i] == number) { return true } 
+    }
+    return false;
+}
+
+function testIncludes(array, number) {
+    console.log(includes(array, number));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -133,7 +144,8 @@ function main()
     // testConcat(array, array2); // [ 1, 2, 3, 4, 5, 6 ]
     // testSlice(array3, 1, 3) // [ 5, 6]
     // testSplice(array, 1, 1) // [ 1, 3 ]
-    testIndexOf(array, 2); // 1
+    // testIndexOf(array, 2); // 1
+    // testIncludes(array, 2); // true
 }
 
 main()
