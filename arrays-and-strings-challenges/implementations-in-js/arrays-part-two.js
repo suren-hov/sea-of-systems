@@ -64,6 +64,25 @@ function testMap(array) {
     console.log(map(array));
 }
 
+const isEvenNumber = function(number) {
+    return number % 2 === 0;
+}
+
+function filter(array) {
+    let newArray = [];
+    let startPoint = 0;
+    for (let index = 0; index < array.length; index++) {
+        if (isEvenNumber(array[index])) {
+            newArray[startPoint] = array[index];
+        }        
+    }
+    return newArray;
+}
+
+function testFilter(array) {
+    console.log(filter(array));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -72,7 +91,8 @@ function main()
     // testJoin(array, '-') // 1-2-3
     // testSort(array2); // [ 3, 5, 8 ]
     // testForEach(array); // [ 2, 4, 6 ]
-    testMap(array); // [ 1, 3 ]
+    // testMap(array); // [ 1, 3 ]
+    // testFilter(array); // [ 2 ]
 }
 
 main()
