@@ -122,9 +122,20 @@ function testFindIndex(array, elem) {
     console.log(findIndex(array, elem));
 }
 
+function some(array, func) {
+    for (let index = 0; index < array.length; index++) {
+        if (func(array[index])) { return true; }
+    }
+    return false;
+}
+
+function testSome(array, func) {
+    console.log(some(array, func));
+}
+
 function every(array, func) {
     for (let index = 0; index < array.length; index++) {
-        if (func(array[index])) { return false; }
+        if (!func(array[index])) { return false; }
     }
     return true;
 }
@@ -146,6 +157,7 @@ function main()
     // testReduce(array, 0); // 6
     // testFind(array, 3); // 3
     // testFindIndex(array, 3) // 2
+    testSome(array, isEvenNumber) // true
     // testEvery(array, isEvenNumber) // false
 }
 
