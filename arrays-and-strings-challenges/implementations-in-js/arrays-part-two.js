@@ -144,6 +144,17 @@ function testEvery(array, func) {
     console.log(every(array, func));
 }
 
+function fill(array, number) {
+    for (let index = 0; index < array.length; index++) {
+        array[index] = number;
+    }
+    return array;
+}
+
+function testFill(array, number) {
+    console.log(fill(array, number));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -157,8 +168,10 @@ function main()
     // testReduce(array, 0); // 6
     // testFind(array, 3); // 3
     // testFindIndex(array, 3) // 2
-    testSome(array, isEvenNumber) // true
+    // testSome(array, isEvenNumber) // true
     // testEvery(array, isEvenNumber) // false
+    // testFill(array, 0) // [ 0, 0, 0 ]
+    
 }
 
 main()
