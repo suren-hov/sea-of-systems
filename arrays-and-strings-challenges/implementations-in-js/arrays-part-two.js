@@ -109,6 +109,30 @@ function testFind(array, elem) {
     console.log(find(array, elem));
 }
 
+function findIndex(array, elem) {
+    for (let index = 0; index < array.length; index++) {
+        if (array[index] === elem) {
+            return index;
+        }
+    }
+    return -1;
+}
+
+function testFindIndex(array, elem) {
+    console.log(findIndex(array, elem));
+}
+
+function every(array, func) {
+    for (let index = 0; index < array.length; index++) {
+        if (func(array[index])) { return false; }
+    }
+    return true;
+}
+
+function testEvery(array, func) {
+    console.log(every(array, func));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -121,6 +145,8 @@ function main()
     // testFilter(array); // [ 2 ]
     // testReduce(array, 0); // 6
     // testFind(array, 3); // 3
+    // testFindIndex(array, 3) // 2
+    // testEvery(array, isEvenNumber) // false
 }
 
 main()
