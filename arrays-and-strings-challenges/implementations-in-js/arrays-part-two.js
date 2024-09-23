@@ -30,6 +30,21 @@ function testSort(array) {
     console.log(sort(array));
 }
 
+const multipleNumber = function (number) {
+    return number * 2;
+}
+
+function forEach(array) {
+    for (let index = 0; index < array.length; index++) {
+        array[index] = multipleNumber(array[index]);
+    }
+    return array;
+}
+
+function testForEach(array) {
+    console.log(forEach(array));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -37,6 +52,8 @@ function main()
     
     // testJoin(array, '-') // 1-2-3
     // testSort(array2); // [ 3, 5, 8 ]
+    testForEach(array); // [ 2, 4, 6 ]
+
 }
 
 main()
