@@ -98,6 +98,17 @@ function testReduce(array, acc) {
     console.log(reduce(array, acc, sumWithAcc));
 }
 
+function find(array, elem) {
+    for (let index = 0; index < array.length; index++) {
+        if(array[index] == elem) return { elem }
+    }
+    return Number.MAX_SAFE_INTEGER
+}
+
+function testFind(array, elem) {
+    console.log(find(array, elem));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -109,7 +120,7 @@ function main()
     // testMap(array); // [ 1, 3 ]
     // testFilter(array); // [ 2 ]
     // testReduce(array, 0); // 6
-    
+    // testFind(array, 3); // 3
 }
 
 main()
