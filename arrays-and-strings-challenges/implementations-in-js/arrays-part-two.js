@@ -189,6 +189,18 @@ function testFlat(array) {
     console.log(flat(array));
 }
 
+function from(string) {
+    let array = [];
+    for (let index = 0; index < string.length; index++) {
+        array[index] = +string[index];
+    }
+    return array;
+}
+
+function testFrom(string) {
+    console.log(from(string));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -208,6 +220,8 @@ function main()
     // testFill(array, 0); // [ 0, 0, 0 ]
     // testToString(array); // "1,2,3"
     // testFlat(array3); // [ 1, 2, 3, 4 ]
+    // testFrom("123"); // [ 1, 2, 3 ]
+    
 }
 
 main()
