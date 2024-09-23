@@ -45,6 +45,25 @@ function testForEach(array) {
     console.log(forEach(array));
 }
 
+const isOddNumber = function(number) {
+    return number % 2 != 0;
+}
+
+function map(array) {
+    let newArray = [];
+    let startPoint = 0;
+    for (let index = 0; index < array.length; index++) {
+        if (isOddNumber(array[index])) {
+            newArray[startPoint++] = array[index];
+        }
+    }
+    return newArray;
+}
+
+function testMap(array) {
+    console.log(map(array));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -52,8 +71,8 @@ function main()
     
     // testJoin(array, '-') // 1-2-3
     // testSort(array2); // [ 3, 5, 8 ]
-    testForEach(array); // [ 2, 4, 6 ]
-
+    // testForEach(array); // [ 2, 4, 6 ]
+    testMap(array); // [ 1, 3 ]
 }
 
 main()
