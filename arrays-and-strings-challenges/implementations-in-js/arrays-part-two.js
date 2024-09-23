@@ -201,6 +201,14 @@ function testFrom(string) {
     console.log(from(string));
 }
 
+function isArray(value) {
+    return value instanceof Array;
+}
+
+function testIsArray(value) {
+    console.log(isArray(value));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -221,7 +229,7 @@ function main()
     // testToString(array); // "1,2,3"
     // testFlat(array3); // [ 1, 2, 3, 4 ]
     // testFrom("123"); // [ 1, 2, 3 ]
-    
+    // testIsArray(array); // true
 }
 
 main()
