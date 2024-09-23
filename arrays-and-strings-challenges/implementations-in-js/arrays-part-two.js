@@ -83,6 +83,21 @@ function testFilter(array) {
     console.log(filter(array));
 }
 
+const sumWithAcc = function (acc, number) {
+    return acc += number;
+}
+
+function reduce(array, acc, func) {
+    for (let index = 0; index < array.length; index++) {
+        acc = func(acc, array[index]); 
+    }
+    return acc;
+}
+
+function testReduce(array, acc) {
+    console.log(reduce(array, acc, sumWithAcc));
+}
+
 function main()
 {
     let array = [1, 2, 3];
@@ -93,6 +108,8 @@ function main()
     // testForEach(array); // [ 2, 4, 6 ]
     // testMap(array); // [ 1, 3 ]
     // testFilter(array); // [ 2 ]
+    // testReduce(array, 0); // 6
+    
 }
 
 main()
