@@ -168,10 +168,32 @@ function testToString(array) {
     console.log(toString(array));
 }
 
+function flat(array) {
+    let newArray = [];
+    let indexOfNewArray = 0;
+
+    for (let index = 0; index < array.length; index++) {        
+        if (Array.isArray(array[index])) {
+            let nestedArray = array[index];
+            for (let j = 0; j < nestedArray.length; j++) {
+                newArray[indexOfNewArray++] = nestedArray[j];
+            }
+        } else {
+            newArray[indexOfNewArray++] = array[index];
+        }
+    }
+    return newArray;
+}
+
+function testFlat(array) {
+    console.log(flat(array));
+}
+
 function main()
 {
     let array = [1, 2, 3];
     let array2 = [5, 3, 8];
+    let array3 = [1, [2, 3], [4]]; 
     
     // testJoin(array, '-'); // 1-2-3
     // testSort(array2); // [ 3, 5, 8 ]
@@ -185,6 +207,7 @@ function main()
     // testEvery(array, isEvenNumber); // false
     // testFill(array, 0); // [ 0, 0, 0 ]
     // testToString(array); // "1,2,3"
+    // testFlat(array3); // [ 1, 2, 3, 4 ]
 }
 
 main()
