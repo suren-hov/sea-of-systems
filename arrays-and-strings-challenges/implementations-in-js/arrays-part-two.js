@@ -155,23 +155,36 @@ function testFill(array, number) {
     console.log(fill(array, number));
 }
 
+function toString(array) {
+    let string = "";
+    for (let index = 0; index < array.length; index++) {
+        string += array[index];
+        if (index != array.length -1) { string += ","; };
+    }
+    return string;
+}
+
+function testToString(array) {
+    console.log(toString(array));
+}
+
 function main()
 {
     let array = [1, 2, 3];
     let array2 = [5, 3, 8];
     
-    // testJoin(array, '-') // 1-2-3
+    // testJoin(array, '-'); // 1-2-3
     // testSort(array2); // [ 3, 5, 8 ]
     // testForEach(array); // [ 2, 4, 6 ]
     // testMap(array); // [ 1, 3 ]
     // testFilter(array); // [ 2 ]
     // testReduce(array, 0); // 6
     // testFind(array, 3); // 3
-    // testFindIndex(array, 3) // 2
-    // testSome(array, isEvenNumber) // true
-    // testEvery(array, isEvenNumber) // false
-    // testFill(array, 0) // [ 0, 0, 0 ]
-    
+    // testFindIndex(array, 3); // 2
+    // testSome(array, isEvenNumber); // true
+    // testEvery(array, isEvenNumber); // false
+    // testFill(array, 0); // [ 0, 0, 0 ]
+    // testToString(array); // "1,2,3"
 }
 
 main()
