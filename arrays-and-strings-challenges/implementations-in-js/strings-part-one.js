@@ -142,6 +142,25 @@ function startsWith(string, word) {
     return count == 0 ? true : false;
 }
 
+function indexOf(string, character) {
+    for (let index = 0; index < string.length; index++) {
+        if (string[index] == character) {
+            return index;
+        }
+    }
+    return -1;
+}
+
+function lastIndexOf(string, character) {
+    lastIndex = -1;
+    for (let index = 0; index < string.length; index++) {
+        if (string[index] == character) {
+            lastIndex = index;
+        }
+    }
+    return lastIndex;
+}
+
 function main() 
 {
     // console.log(charAt("hello", "e")); // 1
@@ -149,8 +168,10 @@ function main()
     // console.log(concat("hello", "world")); // helloworld
     // console.log(includes("hello world", "world")); // true
     // console.log(endsWith("hello world", "world")); // true
-    console.log(startsWith("hello world", "world")); // false
-    
+    // console.log(startsWith("hello world", "world")); // false
+    // console.log(indexOf("hello world", "l")); // 2
+    // console.log(lastIndexOf("hello world", "l")); // 9
+
 }
 
 main()
