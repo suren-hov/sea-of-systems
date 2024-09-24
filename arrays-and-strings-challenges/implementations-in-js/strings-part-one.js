@@ -220,6 +220,23 @@ function replace(string, word, withWord) {
     return newString;
 }
 
+function replaceAll(string, word, withWord) {
+    let wordStartPoint = 0;
+    let newString = "";
+    
+    let startIndex = search(string, word);
+    
+    for (let index = 0; index < string.length; index++) {
+        if (index < startIndex) {
+            newString += string[index];
+        } else{
+            newString += withWord[wordStartPoint++];
+            if (wordStartPoint == withWord.length) { wordStartPoint = 0 }
+        }
+    }
+    return newString;
+}
+
 function main() 
 {
     // console.log(charAt("hello", "e")); // 1
@@ -233,6 +250,7 @@ function main()
     // console.log("hello123 world456".customMatch(/\d+/g)); // ['123', '456']
     // console.log(replace("hello world", "world", "there")); // hello there
     // console.log(search("hello world", "world")); // 6
+    console.log(replaceAll("hello hello", "hello", "hi")); // hello there
     
 }
 
