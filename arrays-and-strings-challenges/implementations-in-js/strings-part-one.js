@@ -183,6 +183,43 @@ String.prototype.customMatch = function(regex) {
     return matches.length > 0 ? matches : null;
 };
 
+function search(string, word) {
+    let wordStartPoint = 0;
+    let wordSize = word.length;
+    let flag = 0;
+    let startIndex = 0;
+    for (let index = 0; index < string.length; index++) {
+        if (wordSize == 0) return startIndex;
+        if (string[index] != word[wordStartPoint] && flag) {
+            flag = 0;
+            wordSize = word.length;
+            wordStartPoint = 0;
+        }
+        
+        if (string[index] == word[wordStartPoint]) {
+            if (flag == 0) {startIndex = index};
+            wordStartPoint++;
+            flag = 1;
+            wordSize--;
+        }
+    }
+    return wordSize == 0 ? startIndex : -1;
+}
+
+function replace(string, word, withWord) {
+    let wordStartPoint = 0;
+    let newString = "";
+    let startIndex = search(string, word);
+    for (let index = 0; index < string.length; index++) {
+        if (index < startIndex) {
+            newString += string[index];
+        } else{
+            newString += withWord[wordStartPoint++];
+        }
+    }
+    return newString;
+}
+
 function main() 
 {
     // console.log(charAt("hello", "e")); // 1
@@ -194,6 +231,9 @@ function main()
     // console.log(indexOf("hello world", "l")); // 2
     // console.log(lastIndexOf("hello world", "l")); // 9
     // console.log("hello123 world456".customMatch(/\d+/g)); // ['123', '456']
+    // console.log(replace("hello world", "world", "there")); // hello there
+    // console.log(search("hello world", "world")); // 6
+    
 }
 
 main()
