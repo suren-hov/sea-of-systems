@@ -94,13 +94,63 @@ function includes(string, word) {
     return count == 0 ? true : false;
 }
 
+function endsWith(string, word) {
+    flag = 0;
+    count = word.length;
+    wordStartPoint = 0;
+    for (let index = string.length - count; index < string.length; index++) {
+
+        if (string[index] != word[wordStartPoint] && flag) {
+            if (string.length - index >= word.length) {
+                flag = 0;
+                wordStartPoint = 0;
+                count = word.length;
+            } else {
+                return false;
+            }
+        }
+
+        if (string[index] == word[wordStartPoint]) {
+            count--;
+            wordStartPoint++;
+        }
+    }
+    return count == 0 ? true : false;
+}
+
+function startsWith(string, word) {
+    flag = 0;
+    count = word.length;
+    wordStartPoint = 0;
+    for (let index = 0; index < string.length - count; index++) {
+
+        if (string[index] != word[wordStartPoint] && flag) {
+            if (string.length - index >= word.length) {
+                flag = 0;
+                wordStartPoint = 0;
+                count = word.length;
+            } else {
+                return false;
+            }
+        }
+
+        if (string[index] == word[wordStartPoint]) {
+            count--;
+            wordStartPoint++;
+        }
+    }
+    return count == 0 ? true : false;
+}
+
 function main() 
 {
     // console.log(charAt("hello", "e")); // 1
     // console.log("hello".customCharCodeAt(1)); // 101
     // console.log(concat("hello", "world")); // helloworld
     // console.log(includes("hello world", "world")); // true
-        
+    // console.log(endsWith("hello world", "world")); // true
+    console.log(startsWith("hello world", "world")); // false
+    
 }
 
 main()
