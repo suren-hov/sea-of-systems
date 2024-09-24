@@ -161,6 +161,28 @@ function lastIndexOf(string, character) {
     return lastIndex;
 }
 
+String.prototype.customMatch = function(regex) {
+    // Check if the provided regex is a valid regular expression
+    if (!(regex instanceof RegExp)) {
+        throw new TypeError("Argument must be a RegExp");
+    }
+
+    // This array will store the matched results
+    let matches = [];
+    let match;
+
+    // Use the regex.exec() method in a loop to find all matches
+    while ((match = regex.exec(this))) {
+        matches.push(match[0]); // Push the matched string into the matches array
+        // Move the index to the end of the last match to find subsequent matches
+        regex.lastIndex = match.index + match[0].length;
+        if (regex.lastIndex >= this.length) break; // Break if no more matches can be found
+    }
+
+    // Return the matches found or null if none were found
+    return matches.length > 0 ? matches : null;
+};
+
 function main() 
 {
     // console.log(charAt("hello", "e")); // 1
@@ -171,7 +193,7 @@ function main()
     // console.log(startsWith("hello world", "world")); // false
     // console.log(indexOf("hello world", "l")); // 2
     // console.log(lastIndexOf("hello world", "l")); // 9
-
+    // console.log("hello123 world456".customMatch(/\d+/g)); // ['123', '456']
 }
 
 main()
