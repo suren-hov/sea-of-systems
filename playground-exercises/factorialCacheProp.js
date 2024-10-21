@@ -11,5 +11,6 @@ function f(n, cache = {}) {
     
     return cache[n];
 }
-
+console.time('Factorial with function prop');
 console.log(f(4));
+console.timeEnd('Factorial with function prop');

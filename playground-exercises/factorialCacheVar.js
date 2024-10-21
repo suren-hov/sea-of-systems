@@ -12,4 +12,6 @@ function modifyGlobalVar(n) {
     return myGlobalVar[n];
 }
 
+console.time('Factorial with global var');
 console.log(modifyGlobalVar(4));
+console.timeEnd('Factorial with global var');
