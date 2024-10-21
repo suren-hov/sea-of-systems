@@ -19,5 +19,5 @@ const createMemoizedFactorial = () => {
 const memoizedFactorial = createMemoizedFactorial();
 
 console.time('Factorial with closure');
-console.log(memoizedFactorial(4));
+console.log(memoizedFactorial(45));
 console.timeEnd('Factorial with closure');
