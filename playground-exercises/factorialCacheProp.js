@@ -4,7 +4,7 @@ function f(n) {
     }
     
     if (!f.cache) {
-        f.cache = {};
+        f.cache = new Array;
     }
 
     if (f.cache[n]) {
@@ -16,5 +16,5 @@ function f(n) {
 }
 
 console.time('Factorial with function prop');
-console.log(f(4));
+console.log(f(100));
 console.timeEnd('Factorial with function prop');
